@@ -1,0 +1,22 @@
+#Autocorrect the words in Python
+
+1. Load the dataset.
+2. POS Tagging of words.[Noun, Proper Noun, Verb, Adv., Adj., Proposition]. --> One time activity. 
+3. Deal with digits and numbers. Remove/Retain. ---> Retain, since they cannot be validated as they are numbers & not words.
+4. Mis-spelled word. Check the word in a vocabulary of words. 
+   Solution 1:- Search words using 'str.startswith()' for the first 4 characters. Create a subset of these words. Find the Levingshtein 		        distance for the word with each of the words in the created subset. Select the word with minimum Levenshtein distance as 					the correct word.
+   				Carry out the above procedure using Jaro-Winkler distance metric instead of Levenshtein distance(Min. #Characters to be 				1.Inserted OR 2.Deleted OR 3.Replaced).
+   				
+   Solution 2:- Find the nearest match. Use word vectors(/embeddings) to identfy the nearest match.
+   				Cosine Similarity to find the nearest matching word. How to find the vector for a mis-spelled word? 
+   				Not feasible.
+   				
+   Solution 3:- For each word in the vocabulary(/corpus) find the POS tagging for the word and create a dictionary mapping the tags to a 	  			list of corresponding words. Obtain the POS tag for the word entered by the user. Search similar words in the values list 					corresponding to the obtained POS tag. This will help in reducing the search time.
+   				
+5. Divide the words. Find the nearest neighbour for each word.
+
+Examples:-
+Typed characters:- ang
+Recommendations:- anglo, and, an 
+Typed characters:- unsplinterabel
+Recommendations:- unsplinterable
